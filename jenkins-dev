@@ -1,0 +1,16 @@
+pipeline {
+    agent { label 'shop'}
+    stages {
+        stage ('vcs') {
+            steps {
+                git url: https://github.com/gautamshrinivas/buddy-works.git,
+                branch: 'dev'
+            }
+        }
+        stage ('build') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+    }
+}
